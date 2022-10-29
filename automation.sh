@@ -6,7 +6,7 @@ s3_bucket=upgrad-saiteja
 myname=saiteja
 
 
-apt update -y #update the package information
+sudo apt update -y #update the package information
 
 apache2 -v > /dev/null
 
@@ -14,11 +14,11 @@ if [ $? -eq 0 ]
 then
 echo "apache2 is alraedy installed"
 else
-apt install apache2 -y
+sudo apt install apache2 -y
 fi
 
 
-apt install awscli -y
+sudo apt install awscli -y
 
 var=$(systemctl is-enabled apache2)
 var1=$(systemctl is-active apache2)
@@ -26,7 +26,7 @@ var1=$(systemctl is-active apache2)
 
 if [ $var1 != "active" ]
 then
-systemctl start apache2
+sudo systemctl start apache2
 else
 echo "Apache2 already active"
 fi
@@ -34,7 +34,7 @@ fi
 
 if [ $var != "enabled" ]
 then
-systemctl enable apache2
+sudo systemctl enable apache2
 else
 echo "Apache2 Already enabled"
 fi
